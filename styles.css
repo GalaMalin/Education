@@ -190,30 +190,28 @@ a {
 }
 
 /* --- Тексты в Обложке --- */
-.hi1 p {
+.hi1 {
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 2px;    
     color: rgb(162, 156, 199);
 }
-.hi2 p {
+.hi2 {
     font-family: 'DayOne'; 
     font-size: 85px;
     font-weight: 700;
     letter-spacing: 2.5px;
     color: rgb(255, 90, 0);
 }
-
 .hi2 {    
     margin-bottom: 35px;
 }
-
-.hi3 p {    
+.hi3 {    
     font-size: 32px;
     font-weight: 600;             
     line-height: 1.2;
 }
-.hi4 p {    
+.hi4 {    
     font-size: 18px;    
     font-weight: 400;            
     padding-top: 35px;        
@@ -250,7 +248,7 @@ a {
     width: 100%;
 }
 
-.anonce__content h3 {
+.anonce__content h2 {
     color: rgb(41, 171, 226);
     font-size: 38px;
     text-align: center;
@@ -334,7 +332,7 @@ a {
     justify-content: center; /* Выравнивание текста по центру по вертикали */
 }
 
-.vector__item_side1 h4 {
+.vector__item_side1 h3 {
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 12px;
@@ -362,10 +360,10 @@ a {
     width: 100%;
     }
 .book-nul {
-    width: 70%;
+    width: 60%;
     }
 .book-svg {
-        width: 25%;
+        width: 40%;
     }
 
 
@@ -511,7 +509,7 @@ a {
   }
 
   .course_trip_card__text {
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.5;
     color: #4b5563;
     margin: 0 0 12px;
@@ -526,19 +524,15 @@ a {
     text-align: left;
   }  
 
-/* спрятанная панель карточек */
-.panel.is-open { 
-    display: block; 
-}
+/* Спрятанная панель карточек */
 .panel {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows .3s ease;
-  overflow: hidden;
+    display: none;
+    margin-top: 20px;
 }
-.panel.is-open { grid-template-rows: 1fr; }
-.panel > div { overflow: hidden; } /* обёртка внутри */
-.panel:not(.is-open) { margin: 0; padding: 0; border: 0; }
+
+.panel.is-open {
+    display: block;
+}
 
 
 
@@ -720,53 +714,4 @@ body.modal-open { overflow: hidden; }
     .modal__content { grid-template-columns: 1fr; }
     .modal__image { width: 80px; height: 80px; }
     .modal__title { font-size: 20px; }
-}
-
-
-
-
-
-/* --- АДАПТИВ (Мобильные устройства) --- */
-@media (max-width: 768px) {
-    .card__content {
-        grid-template-columns: 1fr; /* Переход в одну колонку */
-    }
-    
-    .card__image img {
-        height: 250px; /* Фиксированная высота для картинки снизу */
-        border-top-right-radius: 0; /* Сверху радиус не нужен, там текст */
-        border-bottom-left-radius: 15px; /* Закругляем левый нижний угол */
-        border-bottom-right-radius: 15px; /* Закругляем правый нижний угол */
-    }
-    
-    .card__text {
-        padding: 24px;
-    }
-}
-
-
-
-
-
-/* --- АДАПТИВ --- */
-@media (max-width: 768px) {
-    .main__content {
-        grid-template-columns: 1fr;
-    }
-    
-    .header__container {
-        padding: 0 16px;
-    }
-    
-    .header__nav .nav__list {
-        gap: 20px;
-    }
-    
-    .right-content {
-        padding: 24px;
-    }
-    
-    .right-content {
-        font-size: 24px;
-    }
 }
