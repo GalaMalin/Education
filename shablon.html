@@ -1,0 +1,49 @@
+<!-- удалить все сta, если записи нет; при записи откр оставить open, дать ссылку; при записи закр оставить close, убрать ссылку, кнопку. Если нужно надпись на плашке уникальную, написать в text   -->
+                    <article class="course_trip_card" id="УНИКАЛЬНЫЙ_ID"                     
+                        data-cta-status="open|closed"
+                        data-cta-href="https://example.com/register/УНИКАЛЬНЫЙ_ID"
+                        data-cta-text="Записаться"
+                        data-speaker='один абзац описания спикера'>                        
+                        <p class="course_trip_card__top">КАТЕГОРИЯ</p>
+                        <img class="course_trip_card__logo" src="Pic/ФАЙЛ.png" alt="Осмысленное описание картинки">
+                        <div class="course_trip_card__body">
+                            <p class="course_trip_card__eyebrow">Тип (Онлайн-курс / Вебинар / …)</p>
+                            <h3 class="course_trip_card__title">Заголовок</h3>
+                            <p class="course_trip_card__text">Короткий тизер (1–2 предложения)</p>
+                            <p class="course_trip_card__note">Дата / период</p>
+                            <button class="btn-primary" type="button" data-modal>Подробнее</button>
+                        </div>
+                        <template class="card-modal-source">
+                            <p>Полный текст модалки — абзац 1.</p>
+                            <p>Абзац 2.</p>
+                            <ul>
+                                <li>Пункт списка</li>
+                            </ul>
+                        </template>
+                        <template class="card-modal-speaker">
+                            <p><strong>ФИО</strong> — должность, регалии.</p>
+                            <p>Дополнительный абзац про спикера (если нужен).</p>
+                        </template>
+                    </article>
+
+<!-- Не удалять: id, img.logo, h3.title, button[data-modal], .course_trip_card__body, .course_trip_card (класс). Без них модалка не откроется или будет пустой. -->
+<!-- Остальное удалять целиком, если не нужно
+Категория	Удалить <p class="course_trip_card__top">…</p> целиком
+Предзаголовок	Удалить <p class="course_trip_card__eyebrow">…</p>
+Тизер	Удалить <p class="course_trip_card__text">…</p>
+Дата	Удалить <p class="course_trip_card__note">…</p>
+Полный текст	Удалить <template class="card-modal-source">…</template>
+Спикер	Удалить <template class="card-modal-speaker">…</template> и data-speaker
+CTA	Удалить data-cta-status, data-cta-href, data-cta-text 
+
+Проверять:
+id уникален (не совпадает с другими карточками).
+img.logo — src и осмысленный alt.
+h3.title заполнен.
+button[data-modal] — есть атрибут data-modal.
+Если нужна запись — data-cta-status="open" + data-cta-href.
+Если запись закрыта — data-cta-status="closed" (без href).
+Если записи нет — не пишите data-cta-* вообще.
+Если нужен спикер — <template class="card-modal-speaker"> (или data-speaker).
+Если нужен полный текст — <template class="card-modal-source">.
+Ненужные поля удалены, а не оставлены пустыми.-->
