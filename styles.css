@@ -621,8 +621,7 @@ a {
     width: 100px;
     height: 100px;
     object-fit: contain;
-    border-radius: 10px;
-    background: #f9fafb;
+    border-radius: 10px;    
     padding: 8px;
 }
 .modal__body { min-width: 0; }
