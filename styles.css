@@ -10,7 +10,7 @@ html {
     scroll-padding-top: 80px; /* МАГИЯ: отступ сверху при скролле к якорям */
 }
 body {
-    font-family: Roboto, 'Segoe UI', sans-serif, -apple-system, BlinkMacSystemFont;    
+    font-family: Roboto, 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;    
     font-size: 16px;
     line-height: 1.5;
     color: #454353;
@@ -22,7 +22,7 @@ body {
     height: 100%;    
 }
 h2 {
-    font-size: 38px;
+    font-size: clamp(22px, 5vw, 38px);
     font-weight: 700;
     color: #454353;
     padding: 40px 0px;
@@ -38,7 +38,7 @@ a {
 }
 /* --- Кнопка стандартная --- */
 .btn-primary {
-    font-family: Roboto, 'Segoe UI', sans-serif, -apple-system, BlinkMacSystemFont;
+    font-family: Roboto, 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: #7b7794;
     color: #ffffff;
     border: none;
@@ -49,11 +49,12 @@ a {
     margin: 15px 0px;
     text-decoration: none;    
     cursor: pointer;
-    transition: background-color 0.3s;    
+    transition: background-color 0.3s;        
 }
 .btn-primary:hover {
     background-color: #625e7f;
 }
+
 
 /* --- ЛОКАЛЬНОЕ ПОДКЛЮЧЕНИЕ ШРИФТА DAYONE --- */ 
 @font-face { 
@@ -73,56 +74,46 @@ a {
     left: 0;
     z-index: 1000;
 }
-
 .header__container {     
     display: flex; 
     align-items: center; 
     justify-content: space-between; 
 }
-
 .header__logo_link { 
     display: inline-flex; /* Делает ссылку гибким контейнером, как был div */     
     outline: none; /* (Опционально) Убирает синюю рамку вокруг ссылки при клике  */ 
 }
-
 .header__logo_link:hover { 
     cursor: pointer; 
     opacity: 0.9; /* Легкое затемнение при наведении (опционально) */ 
 }
-
 .header__logo {
     display: flex;
     align-items: center;
     gap: 12px;    
 }
-
 .logo__img {
     width: 40px;
     height: 40px;        
     display: block;
 }
-
 .logo__text {
     font-size: 16px;    
     color: #ffffff;
 }
-
 .header__nav .nav__list {
     display: flex;
     list-style: none;
     gap: 32px;
 }
-
 .nav__link {    
     color: #ffffff;
     font-size: 16px;
     transition: color 0.3s;
 }
-
 .nav__link:hover {
     color: #d4d0e4;
 }
-
 .header__nav {
     display: flex;
     align-items: center;
@@ -159,6 +150,40 @@ a {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Тень меньше */
 }
 
+    /* --- Бургер (по умолчанию скрыт на десктопе) --- */
+.header__burger {
+  display: none;              /* на десктопе не виден */
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.header__burger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+/* Три полоски превращаются в крестик, когда меню открыто */
+.header__burger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.header__burger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.header__burger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+
 
 /* --- ОСНОВНОЙ КОНТЕНТ --- */
 .main {
@@ -174,12 +199,10 @@ a {
     align-items: start; /* чтобы блоки не растягивались по высоте */ 
     margin-bottom: 50px;
 }
-
 .main__left { 
     display: grid; 
     grid-template-rows: auto auto auto; /* Три строки для трех блоков */     
 }
-
 .main__right { 
     display: grid;     
     grid-template-rows: auto auto;
@@ -189,7 +212,7 @@ a {
 /* --- Тексты в Обложке --- */
 .hi1 {
     font-family: Segoe UI, sans-serif;
-    font-size: 16px;
+    font-size: clamp(12px, 3vw, 16px);
     font-weight: 600;
     letter-spacing: 2.5px;    
     color: rgb(162, 156, 199);
@@ -197,30 +220,31 @@ a {
 }
 .hi2 {
     font-family: 'DayOne'; 
-    font-size: 80px;
+    font-size: clamp(40px, 8vw, 85px);
     font-weight: 700;
     letter-spacing: 2.5px;
     color: rgb(255, 90, 0);
     margin-top: -10px;
     margin-bottom: 40px;
-}  
-
+}
 .hi3 {    
     font-family: Segoe UI, sans-serif;
-    font-size: 32px;
+    font-size: clamp(24px, 6vw, 32px); 
     font-weight: 700;             
     line-height: 1.2;
 }
+
 .hi4 {    
     font-family: Segoe UI, sans-serif;
-    font-size: 22px;    
+    font-size: clamp(16px, 4vw, 22px);    
     letter-spacing: 1,5px;
     font-weight: 100;            
     padding-top: 60px;
     margin-bottom: 10px;        
 }
 .hi5 {
-    margin: 30px 0;
+    display: flex;
+    margin: 30px 0;    
 }
 
 
@@ -250,33 +274,28 @@ a {
     background-color: rgb(238, 248, 231);  
     width: 100%;
 }
-
 .anonce__content h2 {
     color: rgb(41, 171, 226);
-    font-size: 38px;
+    font-size: clamp(22px, 5vw, 38px);
     text-align: center;
     padding: 20px 0;
 }
-
 .anonce_block {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 40px;    
 }
-
 .anonce_block-item-date {
     color: rgb(255, 90, 0);
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 10px;
 }
-
 .anonce_block-item-line {
     height: 1px;
     background-color: rgb(255, 90, 0);
     margin-bottom: 10px;
 }
-
 .anonce_block-item-text {
     font-size: 18px;
     font-weight: 400;
@@ -289,17 +308,32 @@ a {
     background-color: rgb(242, 243, 243);
     padding-bottom: 10px;
 }
-
 .program__item {
     display: flex;
     gap: 20px;
     margin-bottom: 25px;
 }
-
 .program__text {
     font-size: 18px;
     font-weight: 400;    
 }
+
+/* --- О ПРОГРАММЕ: скрытая часть (мобиле) --- */
+/* Кнопка по умолчанию скрыта (на десктопе текст виден весь) */
+.program__toggle {
+  display: none;
+}
+/* Скрытая часть — плавное раскрытие через grid-template-rows */
+.program__more {
+  display: grid;
+  grid-template-rows: 1fr;  
+}
+/* Обёртка внутри — обрезает содержимое при 0fr */
+.program__more > div {
+  overflow: hidden;
+  min-height: 0;
+}
+
 
 
 /* --- НАПРАВЛЕНИЯ --- */
@@ -308,8 +342,8 @@ a {
     background-color: #ffffff;    
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Мягкая тень */
-    overflow: hidden; /* Критически важно для обрезки углов картинки */
-    width: 100%; /* Ограничение ширины */    
+    overflow: hidden; /* Важно для обрезки углов картинки */
+    width: 100%; 
     margin: 40px auto;  
 }
 
@@ -320,13 +354,14 @@ a {
     align-items: stretch; /* Чтобы колонки были строго одинаковой высоты */
 }
 
-/* --- Карточки направлений вариант 1 картинка слева --- */
+/* --- Карточки направлений вариант 2 картинка слева --- */
 .vector__item_content2 {
     display: grid;
     grid-template-columns: 0.9fr 1.1fr; /* Соотношение */
     align-items: stretch; /* Чтобы колонки были строго одинаковой высоты */
 }
 
+/* --- Часть 1, где текст --- */
 .vector__item_side1 {
     padding: 32px;
     display: flex;
@@ -334,22 +369,19 @@ a {
     flex-direction: column;
     justify-content: center; /* Выравнивание текста по центру по вертикали */
 }
-
 .vector__item_side1 h3 {
-    font-size: 24px;
+    font-size: clamp(20px, 5vw, 26px);
     font-weight: 700;
     margin-bottom: 12px;
     color: #454353;
 }
-
 .vector__item_side1 p {
     font-size: 16px;
 }
-
+/* --- Часть 2, где картинка --- */
 .vector__item_side2 {
     position: relative;
 }
-
 .vector__item_side2 img {
     display: block; /* Убирает стандартный зазор под картинкой */
     width: 100%;
@@ -357,20 +389,16 @@ a {
     object-fit: cover; /* Картинка заполняет блок, обрезаясь, но не искажаясь */
 }
 
-/* --- Картинка svg с книгами  --- */
+/* --- Картинка svg с книгами - два блока, картинка справа  --- */
 .cont-book {
     display: flex;
     width: 100%;
     }
-.book-nul {
-    width: 60%;
-    }
-.book-svg {
-        width: 40%;
-    }
+.book-nul {width: 60%;}
+.book-svg {width: 40%;}
 
 
-/* --- КАЛЕНДАРЬ --- */
+/* --- КАЛЕНДАРЬ (КАРТОЧКИ) МЕРОПРИЯТИЙ --- */
 .calendar {
     background-color: rgb(242, 243, 243);
     padding-bottom: 20px;
@@ -433,9 +461,8 @@ a {
     flex-shrink: 0;
     display: block;    
 }
-
 .course_trip_flag h3 {    
-    font-size: 24px;
+    font-size: clamp(20px, 5vw, 26px);
     font-weight: 600;
     line-height: 1.2;    
     margin: 0;
@@ -461,8 +488,7 @@ a {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     overflow: hidden;
 }
-  
-  .course_trip_card__top {
+.course_trip_card__top {
     width: 60%;                 /* 60% ширины карточки */
     margin: 16px 0 0 0;         /* отступ сверху, левый край без отступа */
     background: #3f3f46;
@@ -476,63 +502,56 @@ a {
     overflow: hidden;
     text-overflow: ellipsis;
     border-radius: 0;           /* линия без скруглений */
-  }
-
-  .course_trip_card__logo {
+}
+.course_trip_card__logo {
     display: block;
     height: 100px;
     width: auto;
     margin: 20px auto 16px;
     object-fit: contain;
-  }
-
-  .course_trip_card__body {
+}
+.course_trip_card__body {
     padding: 0 20px;
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
-  }
-
-  .course_trip_card__eyebrow {
+}
+.course_trip_card__eyebrow {
     font-size: 16px;
     color: #817c9b;
     font-weight: 600;
     margin: 0 0 4px;
     text-align: left;
     letter-spacing: 2.5px;
-  }
-
-  .course_trip_card__title {
+}
+.course_trip_card__title {
     font-size: 20px;
     font-weight: 700;
     line-height: 1.25;
     color: #111827;
     margin: 0 0 12px;
     text-align: left;
-  }
-
-  .course_trip_card__text {
+}
+.course_trip_card__text {
     font-size: 18px;
     line-height: 1.5;
     color: #4b5563;
     margin: 0 0 12px;
     text-align: left;
     flex: 1 1 auto;
-  }
-
-  .course_trip_card__note {
+}
+.course_trip_card__note {
     font-size: 18px;
     color: #f97316;
     margin: 0 0 16px;
     text-align: left;
-  }  
+}  
 
 /* Спрятанная панель карточек */
 .panel {
     display: none;
     margin-top: 20px;
 }
-
 .panel.is-open {
     display: block;
 }
@@ -711,4 +730,127 @@ body.modal-open { overflow: hidden; }
     .modal__content { grid-template-columns: 1fr; }
     .modal__image { width: 80px; height: 80px; }
     .modal__title { font-size: 20px; }
+}
+
+
+
+
+/* --- АДАПТИВ --- */
+/* --- Мобильное меню --- */
+@media (max-width: 720px) {
+
+  /* Меню - бургер */
+  .header__burger {
+    display: flex;
+  }
+  /* Меню по умолчанию скрыто, раскрывается по .is-open */
+  .header__nav {
+    position: absolute;
+    top: 70px;                 /* высота как и в .header */
+    left: 0;
+    right: 0;
+    background-color: #7b7794;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 16px 20px 24px;
+    display: none;
+  }
+  .header__nav.is-open {
+    display: flex;
+  }
+  /* Пункты — друг под другом */
+  .nav__list {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+  }
+  .nav__item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  .nav__link {
+    display: block;
+    padding: 10px 0;
+    font-size: 18px;
+    text-align: center;
+  }
+  /* Кнопка внизу меню — на всю ширину */
+  .header__btn {
+    margin-top: 16px;
+    text-align: center;
+    width: 100%;
+  }
+
+/* --- Обложка --- */
+.main__content {
+    display: grid;
+    grid-template-columns: 1fr;    
+    gap: 10;
+    width: 100%;
+}
+.hi4 {
+    padding-top: 0px;
+}
+.btn-primary {
+    font-size: 15px;
+    padding: 12px 24px;
+    margin-top: 16px;
+    text-align: center;    
+    width: 100%;
+    box-sizing: border-box;
+}
+.hi5 {
+    display: flex;
+    margin: 0;    
+}
+
+/* --- Анонс --- */
+.anonce_block {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10;
+    width: 100%;
+}
+
+/* --- О Программе - кнопка Показать больше --- */
+.program__toggle {
+    display: inline-block;
+    margin-top: 16px;
+}
+/* Скрытая часть — плавное раскрытие через grid-template-rows */
+.program__more {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .35s ease;
+}
+/* Открытое состояние */
+.program__more.is-open {
+  grid-template-rows: 1fr;
+}
+
+/* --- Направления Программы - в колонну, картинка сверху --- */
+.vector__item_content1, .vector__item_content2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+}
+/* Картинка — всегда сверху */
+  .vector__item_side2 {
+    order: -1;
+}
+/* Текст — под картинкой */
+  .vector__item_side1 {
+    order: 1;
+}
+
+/* --- Календарь - флажки и карточки в колонну, по ширине экрана --- */
+.course_trip_flag {
+    width: 100%;
+}
+.course_trip_card-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+}
+
 }

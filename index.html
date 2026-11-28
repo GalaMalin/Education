@@ -15,7 +15,18 @@
                     <span class="logo__text">Корпоративное обучение</span> 
                 </div> 
             </a>
-            <nav class="header__nav">
+
+            <!-- Кнопка-бургер (видна только на мобильных) -->
+            <button class="header__burger" type="button"
+                aria-label="Открыть меню"
+                aria-expanded="false"
+                aria-controls="header-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="header__nav" id="header-nav">
                 <ul class="nav__list">
                     <li class="nav__item"><a href="#vect" class="nav__link">Направления</a></li>
                     <li class="nav__item"><a href="#calend" class="nav__link">Календарь</a></li>
@@ -50,25 +61,25 @@
             <div class="container">                        
                 <div class="anonce__content">                    
                     <h2>Ближайшие мероприятия</h2>
-                <div class="anonce_block">
-                    <a href="#programmer1" class="anonce_block-item">                    
-                        <div class="anonce_block-item-date"><p>11 ноября - 9 декабря</p></div>
-                        <div class="anonce_block-item-line"></div>
-                        <div class="anonce_block-item-text"><p>Курс «Основы программирования» (I ступень). Знакомство с Python</p></div>                    
-                    </a>
+                    <div class="anonce_block">
+                        <a href="#programmer1" class="anonce_block-item">                    
+                            <div class="anonce_block-item-date"><p>11 ноября - 9 декабря</p></div>
+                            <div class="anonce_block-item-line"></div>
+                            <div class="anonce_block-item-text"><p>Курс «Основы программирования» (I ступень). Знакомство с Python</p></div>                    
+                        </a>
                     
-                    <a href="#kp_new2026" class="anonce_block-item">                    
-                        <div class="anonce_block-item-date"><p>3 декабря</p></div>
-                        <div class="anonce_block-item-line"></div>
-                        <div class="anonce_block-item-text"><p>Лекция о новшествах в Системах КонсультантПлюс. ИИ-помощник</p></div>                    
-                    </a>    
+                        <a href="#kp_new2026" class="anonce_block-item">                    
+                            <div class="anonce_block-item-date"><p>3 декабря</p></div>
+                            <div class="anonce_block-item-line"></div>
+                            <div class="anonce_block-item-text"><p>Лекция о новшествах в Системах КонсультантПлюс. ИИ-помощник</p></div>                    
+                        </a>    
 
-                    <a href="#trevoga" class="anonce_block-item">
-                        <div class="anonce_block-item-date"><p>14 декабря</p></div>
-                        <div class="anonce_block-item-line"></div>
-                        <div class="anonce_block-item-text"><p>Вебинар «Перфекционизм и прокрастинация: две стороны одной медали»</p></div>                    
-                    </a>           
-                </div>                
+                        <a href="#perfect" class="anonce_block-item">
+                            <div class="anonce_block-item-date"><p>14 декабря</p></div>
+                            <div class="anonce_block-item-line"></div>
+                            <div class="anonce_block-item-text"><p>Вебинар «Перфекционизм и прокрастинация: две стороны одной медали»</p></div>                    
+                        </a>           
+                    </div>                
                 </div>
             </div>
             <div class="shimmer-block"></div>
@@ -81,10 +92,13 @@
                 <div class="program__item-pic">
                     <img src="Pic/mark.png" alt="" class="logo__img">
                 </div>                    
-                <span class="program__text">Программа доступна каждому сотруднику компании. Но особенно она будет полезна инициативным и активным: тем, кто хочет расти профессионально, пробовать новое и постоянно развиваться.
-
-                </span>
+                <span class="program__text">Программа доступна каждому сотруднику компании. Но особенно она будет полезна инициативным и активным: тем, кто хочет расти профессионально, пробовать новое и постоянно развиваться.</span>
             </div>
+
+
+            <div class="program__more" id="program-more">
+            <div>
+
             <div class="program__item">
                 <div class="program__item-pic">
                     <img src="Pic/mark.png" alt="" class="logo__img">
@@ -122,6 +136,18 @@
                 </div>                    
                 <span class="program__text">Для каждого мероприятия будет открыта запись через форму на интранете.</span>
             </div>
+            </div>
+            </div>
+
+            <!-- Кнопка — видна только на мобиле -->
+            <button class="btn-primary program__toggle"
+                type="button"
+                data-toggle="program-more"
+                aria-expanded="false"
+                aria-controls="program-more">
+            Показать больше
+            </button>
+            
                    
             <h2>Информирование</h2>
             <div class="program__item">
@@ -332,6 +358,7 @@
                             <p><strong>ЗАПИСЬ МЕРОПРИЯТИЯ НЕ ПРЕДУСМОТРЕНА!</strong></p>                            
                         </template>                        
                     </article> 
+                    
                 </div>
 
                 <!-- <div class="course_trip_flag" style="--flag-border: #aba5d2">
@@ -381,15 +408,12 @@
         <div class="calendar">
             <div class="container">
                 <h2>Прошедшие мероприятия</h2>
-                <button class="btn-primary" 
-                    type="button"
-                    data-toggle="panel-1"
-                    aria-expanded="false"
-                    aria-controls="panel-1">
-                    Показать
-                </button>
+                
                 <div class="panel" id="panel-1">                                                
                 <div class="course_trip_card-row">
+
+<!-- Добавляем карточки прошедших мероприятий сюда -->                    
+
 
 <!-- Карточка Тонус О тревоге 23.12.2026 -->
                     <article class="course_trip_card" id="trevoga"                                                                   
@@ -402,8 +426,7 @@
                             <p class="course_trip_card__text">Эффективные способы расслабления, которые можно применять в любое время, в любом месте</p>
                             <p class="course_trip_card__note">23 ноября 2026 г.</p>
                             <button class="btn-primary" type="button" data-modal>Подробнее</button>
-                        </div>
-                        <!-- Полный текст модалки (не рендерится, пока не склонируешь) -->
+                        </div>                       
                         <template class="card-modal-source">
                             <p>На вебинаре вы узнаете о простых и эффективных способах расслабления, которые можно выполнять, не покидая рабочего места, дома или в транспорте.</p>
                             <p>Как расслабиться после трудного рабочего дня, большого количества одновременных задач, контактов с большим количеством людей, после неприятных новостей и при ощущении, что Вы как «белка в колесе»?</p>
@@ -443,10 +466,19 @@
                             <p class="course_trip_card__note">22 октября 2026 г.</p>
                             <!-- <button class="btn-primary" type="button" data-modal>Подробнее</button> -->
                         </div>
-                    </article>              
-
-                </div>    
+                    </article>                              
+                
+                </div>                
                 </div>
+
+
+                <button class="btn-primary" 
+                    type="button"
+                    data-toggle="panel-1"
+                    aria-expanded="false"
+                    aria-controls="panel-1">
+                    Показать
+                </button>
             </div>            
         </div>
 
