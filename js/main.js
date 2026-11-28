@@ -11,6 +11,16 @@
 
     btn.setAttribute('aria-expanded', String(isOpen));
     btn.textContent = isOpen ? 'Скрыть' : 'Показать';
+
+    // После закрытия — вернуть кнопку в зону видимости
+    if (!isOpen) {
+      const onEnd = () => {
+        btn.scrollIntoView({ behavior: 'instant', block: 'center' });
+        panel.removeEventListener('transitionend', onEnd);
+      };
+      panel.addEventListener('transitionend', onEnd, { once: true });
+      setTimeout(() => panel.removeEventListener('transitionend', onEnd), 500);
+    }
   });
 })();
 
@@ -177,5 +187,28 @@
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+  });
+})();
+
+
+/* ── Скрипт 3: бургер-меню ── */
+(function () {
+  const burger = document.querySelector('.header__burger');
+  const nav    = document.getElementById('header-nav');
+  if (!burger || !nav) return;
+
+  burger.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('is-open');
+    burger.setAttribute('aria-expanded', String(isOpen));
+    burger.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
+  });
+
+  // Закрыть меню при клике по ссылке (удобно на мобиле)
+  nav.addEventListener('click', (e) => {
+    if (e.target.closest('.nav__link') || e.target.closest('.header__btn')) {
+      nav.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+      burger.setAttribute('aria-label', 'Открыть меню');
+    }
   });
 })();
